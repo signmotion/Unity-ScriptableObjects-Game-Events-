@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(GameEvent))]
+
+[CustomEditor(typeof(GameEvent), true)]
+[CanEditMultipleObjects]
 public class GameEventEditor : Editor
 {
-
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();

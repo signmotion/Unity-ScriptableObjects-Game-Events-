@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+
 public class Player : MonoBehaviour
 {
     public float moveDistance = 0.2f;
