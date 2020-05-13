@@ -11,25 +11,17 @@ public class EventListener : MonoBehaviour
 
     private void OnEnable()
     {
-
-        if (eventAndResponses.Count >= 1)
+        foreach (EventAndResponse eAndR in eventAndResponses)
         {
-            foreach (EventAndResponse eAndR in eventAndResponses)
-            {
-                eAndR.gameEvent.Register(this);
-            }
+            eAndR.gameEvent.Register(this);
         }
-
     }
 
     private void OnDisable()
     {
-        if (eventAndResponses.Count >= 1)
+        foreach (EventAndResponse eAndR in eventAndResponses)
         {
-            foreach (EventAndResponse eAndR in eventAndResponses)
-            {
-                eAndR.gameEvent.DeRegister(this);
-            }
+            eAndR.gameEvent.DeRegister(this);
         }
     }
 
@@ -38,7 +30,7 @@ public class EventListener : MonoBehaviour
     {
         for (int i = eventAndResponses.Count - 1; i >= 0; i--)
         {
-            // Check if the passed event is the correct one
+            // check if the passed event is the correct one
             if (passedEvent == eventAndResponses[i].gameEvent)
             {
                 Debug.Log("Called Event named: " + eventAndResponses[i].name + " on GameObject: " + gameObject.name, this);
@@ -48,6 +40,8 @@ public class EventListener : MonoBehaviour
 
     }
 }
+
+
 
 
 [System.Serializable]
@@ -67,7 +61,8 @@ public class EventAndResponse
     public void EventRaised()
     {
         // default/generic
-        if (responseForSentNone.GetPersistentEventCount() >= 1) // always check if at least 1 object is listening for the event
+        // always check if at least 1 object is listening for the event
+        if (responseForSentNone.GetPersistentEventCount() >= 1)
         {
             responseForSentNone.Invoke();
         }

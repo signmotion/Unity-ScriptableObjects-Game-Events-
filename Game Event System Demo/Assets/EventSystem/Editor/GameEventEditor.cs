@@ -12,11 +12,11 @@ public class GameEventEditor : Editor
 
         GUI.enabled = Application.isPlaying;
 
-        GameEvent _GE = target as GameEvent;
+        GameEvent ge = target as GameEvent;
 
         if (GUILayout.Button("Raise"))
         {
-            _GE.Raise();
+            ge.Raise();
         }
     }
 }
